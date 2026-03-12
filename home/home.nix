@@ -18,6 +18,23 @@
         };
       };
     };
+    starship = {
+      enable = true;
+      enableBashIntegration = true;
+      settings = {
+        add_newline = false;
+        aws.disabled = true;
+        gcloud.disabled = true;
+        line_break.disabled = true;
+      };
+    };
+
+    bash = {
+      enable = true;
+      shellAliases = {
+        ll = "ls -lah";
+      };
+    };
   };
 
   home.stateVersion = "25.11";
