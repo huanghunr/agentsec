@@ -6,12 +6,17 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       nixpkgs,
       nixos-wsl,
+      home-manager,
       ...
     }@inputs:
     let
@@ -24,6 +29,17 @@
 
         modules = [
           ./configuration.nix
+          
+          home-manager.nixosModules.default
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              users.nixos = ./home/home.nix;
+              extraSpecialArgs = { inherit inputs; };
+            };
+          }
 
           nixos-wsl.nixosModules.default
           {
