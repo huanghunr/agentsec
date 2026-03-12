@@ -11,13 +11,13 @@
 
 buildPythonPackage rec {
   pname = "ida-pro-mcp";
-  version = "1.4.0";
+  version = "2.0.0";
 
   src = fetchFromGitHub {
     owner = "mrexodia";
     repo = "ida-pro-mcp";
-    rev = "27722e929052757f4baf074776904effdb23c012";
-    hash = "sha256-abH6i/Xr3P3/gP8L151FZBU9ovp/olFWwKenPz7BuF8=";
+    rev = "8102a0bae77e44794f2db3eb2e5bcf46183ee990";
+    hash = "sha256-KRhirCNmoce6nn8z0PDiXTBi1Urw47a2rkdCHGeKvrY=";
   };
 
   # do not run tests
@@ -32,6 +32,6 @@ buildPythonPackage rec {
 
     dependencies = [
       idapro
-      tomli-w
+      tomli_w
   ];
 }
