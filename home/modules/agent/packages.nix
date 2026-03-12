@@ -1,5 +1,16 @@
-{pkgs, inputs, ...}:{
+{ pkgs, inputs, ... }:
+let
+  unstable = import inputs.unstablepkgs {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+  codex = pkgs.callPackage ./codex.nix {};
+
+in
+{
   home.packages = [
-    inputs.unstablepkgs.opencode
+    unstable.opencode
+    unstable.claude-code
+    codex
   ];
 }

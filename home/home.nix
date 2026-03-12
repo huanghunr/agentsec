@@ -2,9 +2,9 @@
 {
   home.username = "nixos";
   home.homeDirectory = "/home/nixos";
-
   imports = [
     ./modules/packages
+    ./modules/agent
   ];
 
   programs = {
