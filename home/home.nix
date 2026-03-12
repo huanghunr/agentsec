@@ -2,7 +2,11 @@
 {
   home.username = "nixos";
   home.homeDirectory = "/home/nixos";
-  
+
+  imports = [
+    ./modules/packages
+  ];
+
   programs = {
     git = {
       enable = true;

@@ -16,8 +16,6 @@
   environment.systemPackages = with pkgs; [
     wget
     vim
-    nixd
-    nixfmt
   ];
 
   programs.nix-ld.enable = true;
