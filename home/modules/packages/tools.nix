@@ -3,7 +3,6 @@
   [
     binwalk
     upx
-    cyberchef
     socat
   ]
   ++[
