@@ -1,11 +1,12 @@
-# toolz.nix
 {
   lib,
   buildPythonPackage,
-  fetchPypi,
   setuptools,
   wheel,
-  fetchFromGitHub
+  fetchFromGitHub,
+  idapro,
+  tomli_w,
+  ...
 }:
 
 buildPythonPackage rec {
@@ -14,8 +15,9 @@ buildPythonPackage rec {
 
   src = fetchFromGitHub {
     owner = "mrexodia";
-    repo = "mrexodia/ida-pro-mcp";
-    hash = "sha256-IxBBlgrGd2hwtB7aFzU+tD7vts4sAtXEQ1xXpdj4RNo=";
+    repo = "ida-pro-mcp";
+    rev = "27722e929052757f4baf074776904effdb23c012";
+    hash = "sha256-abH6i/Xr3P3/gP8L151FZBU9ovp/olFWwKenPz7BuF8=";
   };
 
   # do not run tests
@@ -26,5 +28,10 @@ buildPythonPackage rec {
   build-system = [
     setuptools
     wheel
+  ];
+
+    dependencies = [
+      idapro
+      tomli-w
   ];
 }

@@ -3,14 +3,18 @@ let
     python = pkgs.python313.override {
     self = python;
     packageOverrides = pyfinal: pyprev: {
-      ida-pro-mcp = pyfinal.callPackage ../agent/ida-pro-mcp.nix { };
+      ida-pro-mcp = pyfinal.callPackage ../agent/ida-pro-mcp.nix 
+      {
+        idapro = pyfinal.callPackage ./pythonPkg-ida-pro.nix {}; 
+        tomli_w = pkgs.python313Packages.tomli-w;
+      };
     };
   };
 in 
 {
   home.packages = with pkgs; [
     #-- python
-    (python313.withPackages (
+    (python.withPackages (
       ps: with ps; [
         # python language server
         pyright
