@@ -4,13 +4,32 @@ let
     system = pkgs.system;
     config.allowUnfree = true;
   };
-  codex = pkgs.callPackage ./codex.nix {};
 
 in
 {
   home.packages = [
-    unstable.opencode
-    unstable.claude-code
-    codex
   ];
+
+  programs = {
+    opencode = {
+      enable = true;
+      enableMcpIntegration = true;
+      package = unstable.opencode;
+      settings = {
+        theme = "system";
+      };
+      agents = { };
+    };
+
+    codex = {
+      enable = true;
+      package = unstable.codex;
+    };
+
+    claude-code = {
+      enable = true;
+      package = unstable.claude-code;
+    };
+  };
+
 }
