@@ -22,6 +22,7 @@
     starship = {
       enable = true;
       enableBashIntegration = true;
+      enableFishIntegration = true;
       settings = {
         add_newline = false;
         aws.disabled = true;
@@ -31,7 +32,6 @@
     };
 
     bash = {
-      enable = true;
       shellAliases = {
         ll = "ls -lah";
       };

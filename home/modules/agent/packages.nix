@@ -4,7 +4,6 @@ let
     system = pkgs.system;
     config.allowUnfree = true;
   };
-
 in
 {
   home.packages = [

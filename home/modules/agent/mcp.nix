@@ -1,15 +1,7 @@
 {pkgs, ...}:
 let 
   mcpPython = pkgs.callPackage ./python.nix {inherit pkgs;};
-in 
-{
-  home.packages = [
-    mcpPython.mcpPython
-  ];
-  home.file.".local/mcp/mcpPython".source = "${mcpPython.mcpPython}";
-  programs.mcp = {
-    enable = true;
-    servers = {
+  mcpSettings = {
       ida-pro-mcp = {
         command = "${mcpPython.py-exec}";
         args = [
@@ -26,6 +18,16 @@ in
           "--"
         ];
       };
-    };
+  };
+in 
+{
+  home.packages = [
+    mcpPython.mcpPython
+  ];
+  home.file.".local/mcp/mcpPython".source = "${mcpPython.mcpPython}";
+
+  programs.mcp = {
+    enable = true;
+    servers = mcpSettings;
   };
 }
