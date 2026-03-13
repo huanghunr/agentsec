@@ -5,7 +5,7 @@
   imports = [
     ./modules/packages
     ./modules/agent
-    ./modules/neovim
+    #./modules/neovim
   ];
 
   programs = {
