@@ -16,14 +16,22 @@ in
       package = unstable.opencode;
       settings = {
         theme = "system";
-      };
-      agents = { };
-      provider = {
-        saas = {
-          options = {
-            baseURL = "https://llm.xiaochisaas.com/v1";
+        provider = {
+          google = {
+            models= {
+              claude-opus-4-6-thinking = {
+                name = "claude-opus-4-6-thinking";
+              };
+            };
+            options = {
+              baseURL = "https://llm.xiaochisaas.com/v1";
+              apiKey = "{env:XIAOCHI_API_KEY}";
+            };
           };
         };
+      };
+      agents = { 
+        security-agent = ./security-agent.md;
       };
     };
 
