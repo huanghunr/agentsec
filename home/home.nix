@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 {
   home.username = "nixos";
   home.homeDirectory = "/home/nixos";
@@ -7,6 +12,8 @@
     ./modules/agent
     #./modules/neovim
   ];
+
+  home.packages = [inputs.Neve.packages.${pkgs.system}.default];
 
   programs = {
     git = {

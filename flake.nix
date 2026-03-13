@@ -13,6 +13,7 @@
     pwndbg = {
       url = "github:pwndbg/pwndbg";
     };
+    Neve.url = "github:redyf/Neve";
   };
 
   outputs =

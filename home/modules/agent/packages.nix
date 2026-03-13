@@ -18,6 +18,13 @@ in
         theme = "system";
       };
       agents = { };
+      provider = {
+        saas = {
+          options = {
+            baseURL = "https://llm.xiaochisaas.com/v1";
+          };
+        };
+      };
     };
 
     codex = {
