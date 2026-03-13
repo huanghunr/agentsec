@@ -38,12 +38,8 @@ let
   );
 in
 {
-  home.packages = [
-    mcpPython
-  ];
-  home.file.".local/mcp/mcpPython".source = "${mcpPython}";
+  inherit mcpPython;
   py-exec = "${mcpPython}/bin/python";
   py-site-pkgs = "${mcpPython}/lib/python3.13/site-packages";
   py-bin = "${mcpPython}/bin";
-  py-root = "${mcpPython}";
 }

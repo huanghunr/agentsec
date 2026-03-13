@@ -3,6 +3,10 @@ let
   mcpPython = pkgs.callPackage ./python.nix {inherit pkgs;};
 in 
 {
+  home.packages = [
+    mcpPython.mcpPython
+  ];
+  home.file.".local/mcp/mcpPython".source = "${mcpPython.mcpPython}";
   programs.mcp = {
     enable = true;
     servers = {
