@@ -18,6 +18,14 @@ in
           "http://127.0.0.1:13337"
         ];
       };
+      mcp-nixos = {
+        command = "nix";
+        args = [
+          "run"
+          "github:utensils/mcp-nixos"
+          "--"
+        ];
+      };
     };
   };
 }
