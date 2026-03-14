@@ -10,7 +10,6 @@
   imports = [
     ./modules/packages
     ./modules/agent
-    #./modules/neovim
   ];
 
   home.packages = [inputs.Neve.packages.${pkgs.system}.default];

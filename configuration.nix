@@ -7,6 +7,9 @@
 
 {
   nixpkgs.config.allowUnfree = true;
+  imports = [
+    ./nixos
+  ];
   environment.systemPackages = with pkgs; [
     wget
     vim
@@ -29,5 +32,5 @@
     "flakes"
   ];
 
-  system.stateVersion = "25.11"; 
+  system.stateVersion = "25.11";
 }
