@@ -168,6 +168,72 @@ Use:
 * pwndbg
 * breakpoints
 * memory inspection
+* pwno-mcp
+
+8. idalib-up
+
+`idalib-up` is a launcher for starting **idalib-mcp** in headless mode for automated IDA analysis.
+
+### Start the server
+
+```bash
+idalib-up <binary>
+```
+
+Example:
+
+```bash
+idalib-up ./chall
+```
+
+This runs:
+
+```
+uv run idalib-mcp --isolated-contexts --host 127.0.0.1 --port 8745 <binary>
+```
+
+### MCP endpoint
+
+After starting, the MCP server is available at:
+
+```
+http://127.0.0.1:8745/sse
+```
+
+Agents can connect to this endpoint to access IDA analysis tools.
+
+### Why `--isolated-contexts`
+
+This option ensures session isolation between agents:
+
+* Prevent agents from modifying each other's session
+* Allow multiple agents to analyze different binaries concurrently
+* Improve reproducibility of analysis
+
+### Environment variables
+
+You can override the listening address:
+
+```
+IDALIB_MCP_HOST
+IDALIB_MCP_PORT
+```
+
+Example:
+
+```bash
+IDALIB_MCP_PORT=9000 idalib-up ./binary
+```
+
+### Help
+
+```
+idalib-up --help
+```
+
+### Agent guideline
+
+When starting static analysis with IDA, prefer using `idalib-up` instead of running `idalib-mcp` directly.
 
 ---
 

@@ -10,6 +10,12 @@ let
           "http://127.0.0.1:13337"
         ];
       };
+
+      idalib-mcp = {
+        enable = true;
+        type = "remote";
+        url = "http://127.0.0.1:8745/mcp";
+      };
       
       mcp-nixos = {
         command = "nix";

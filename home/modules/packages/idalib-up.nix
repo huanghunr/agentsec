@@ -1,59 +1,57 @@
 { pkgs, ... }:
-let
-  exec = ''
-    #!/usr/bin/env bash
+
+pkgs.writeShellScriptBin "idalib-up" ''
     set -euo pipefail
 
-    HOST="$\{IDALIB_MCP_HOST:-127.0.0.1}"
-    PORT="$\{IDALIB_MCP_PORT:-8745}"
+    HOST="''${IDALIB_MCP_HOST:-127.0.0.1}"
+    PORT="''${IDALIB_MCP_PORT:-8745}"
 
     show_help() {
       cat <<EOF
-    idalib-mcp-up - start idalib-mcp with isolated contexts
+  idalib-up - start idalib-mcp with isolated contexts
 
-    Usage:
-      idalib-mcp-up <path-to-executable> [extra-args...]
-      idalib-mcp-up --help
+  Usage:
+    idalib-up <path-to-executable> [extra-args...]
+    idalib-up --help
 
-    Example:
-      idalib-mcp-up /path/to/executable
+  Example:
+    idalib-up /path/to/executable
 
-    Equivalent command:
-      uv run idalib-mcp --isolated-contexts --host $\{HOST} --port $\{PORT} <path-to-executable>
+  Equivalent command:
+    uv run idalib-mcp --isolated-contexts --host ''${HOST} --port ''${PORT} <path-to-executable>
 
-    Why --isolated-contexts?
-      Use it when multiple agents connect to the same idalib-mcp server and you want
-      deterministic context isolation:
+  Why --isolated-contexts?
+    Use it when multiple agents connect to the same idalib-mcp server and you want
+    deterministic context isolation:
 
-      - Prevent one agent from changing another agent's active session accidentally.
-      - Run concurrent analyses safely (for example agent A on binary X and agent B on binary Y).
-      - Still allow intentional collaboration by binding multiple agents to the same open session ID.
-      - Improve reproducibility because each agent's context binding is explicit.
+    - Prevent one agent from changing another agent's active session accidentally.
+    - Run concurrent analyses safely (for example agent A on binary X and agent B on binary Y).
+    - Still allow intentional collaboration by binding multiple agents to the same open session ID.
+    - Improve reproducibility because each agent's context binding is explicit.
 
-    Behavior when --isolated-contexts is enabled:
-      - Each transport context has its own binding:
-          * Mcp-Session-Id for /mcp
-          * session for /sse
-          * stdio:default for stdio
-      - Unbound contexts fail fast for IDB-dependent tools/resources.
-      - idalib_switch(session_id) and idalib_open(...) bind the caller context only.
+  Behavior when --isolated-contexts is enabled:
+    - Each transport context has its own binding:
+        * Mcp-Session-Id for /mcp
+        * session for /sse
+        * stdio:default for stdio
+    - Unbound contexts fail fast for IDB-dependent tools/resources.
+    - idalib_switch(session_id) and idalib_open(...) bind the caller context only.
 
-    Default listen address:
-      host: $\{HOST}
-      port: $\{PORT}
+  Default listen address:
+    host: ''${HOST}
+    port: ''${PORT}
 
-    Environment overrides:
-      IDALIB_MCP_HOST   Override listen host
-      IDALIB_MCP_PORT   Override listen port
+  Environment overrides:
+    IDALIB_MCP_HOST   Override listen host
+    IDALIB_MCP_PORT   Override listen port
 
-    Notes:
-      - You must provide the target executable path.
-      - Extra arguments after the executable path are passed through to idalib-mcp.
-
-    EOF
+  Notes:
+    - You must provide the target executable path.
+    - Extra arguments after the executable path are passed through to idalib-mcp.
+  EOF
     }
 
-    if [[ "$\{1:-}" == "--help" || "$\{1:-}" == "-h" ]]; then
+    if [[ "''${1:-}" == "--help" || "''${1:-}" == "-h" ]]; then
       show_help
       exit 0
     fi
@@ -70,27 +68,8 @@ let
 
     exec uv run idalib-mcp \
       --isolated-contexts \
-      --host "$\{HOST}" \
-      --port "$\{PORT}" \
-      "$\{TARGET}" \
+      --host "''${HOST}" \
+      --port "''${PORT}" \
+      "''${TARGET}" \
       "$@"
-  '';
-in
-pkgs.stdenv.mkDerivation {
-  pname = "idalib-up";
-  version = "1.0.0";
-
-  src = ./.;
-
-  nativeBuildInputs = [ ];
-
-  buildInputs = [ ];
-
-  dontBuild = true;
-
-  installPhase = ''
-    mkdir -p $out/bin
-    echo "${exec}" > $out/bin/idalib-up
-    chmod +x $out/bin/idalib-up
-  '';
-}
+''
