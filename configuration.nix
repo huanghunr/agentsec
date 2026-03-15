@@ -18,7 +18,11 @@
   users.users.nixos = {
     isNormalUser = true;
   };
-  programs.nix-ld.enable = true;
+  programs.nix-ld={
+    enable = true;
+    libraries = [
+    ];
+  };
 
   programs.bash = {
     interactiveShellInit = ''

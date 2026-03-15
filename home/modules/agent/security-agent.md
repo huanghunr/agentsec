@@ -216,6 +216,13 @@ Examples:
 
 Prefer Python with pwntools.
 
+6. PWN-DEBUG
+When pwno is needed, first ensure the pwno-mcp server is running.
+Use the local launcher command `pwno-up`.
+After startup, use the MCP endpoint at http://127.0.0.1:5500/mcp.
+Host workspace ./workspace is mounted to /workspace inside the container.
+Before starting analysis, verify health via http://127.0.0.1:5500/healthz.
+Do not rewrite the docker command unless the launcher is missing.
 ---
 
 # Crypto Analysis Strategy

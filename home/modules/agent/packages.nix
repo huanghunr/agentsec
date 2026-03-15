@@ -32,7 +32,7 @@ in
       };
       agents = { 
         security-agent = ./security-agent.md;
-        nixos-agent = ./nixos-agent.md;
+        nixos-agent = ./this-project-dev-agent.md;
       };
     };
 

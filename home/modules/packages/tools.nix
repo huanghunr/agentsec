@@ -14,5 +14,8 @@
   ]
   ++[
     jadx
+  ]
+  ++[
+    google-chrome
   ];
 }
