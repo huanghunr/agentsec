@@ -32,6 +32,7 @@ in
       };
       agents = { 
         security-agent = ./security-agent.md;
+        nixos-agent = ./nixos-agent.md;
       };
     };
 
