@@ -5,15 +5,24 @@
     unstablepkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     pwndbg = {
       url = "github:pwndbg/pwndbg";
     };
+
     Neve.url = "github:redyf/Neve";
+
+    inputs.sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -34,6 +43,7 @@
         modules = [
           ./configuration.nix
           
+          inputs.sops-nix.nixosModules.sops
           home-manager.nixosModules.default
           {
             home-manager = {
