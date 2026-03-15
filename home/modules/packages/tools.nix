@@ -1,6 +1,7 @@
 {pkgs, inputs, ...}:
 let
-  pwno-up = pkgs.callPackage ./pwno-up/default.nix {};
+  pwno-up = pkgs.callPackage ./pwno-up.nix {};
+  idalib-up = pkgs.callPackage ./idalib-up.nix {};
 in 
 {
   home.packages = with pkgs; 
@@ -16,6 +17,7 @@ in
     pwntools
     ropgadget
     pwno-up
+    idalib-up
   ]
   ++[
     jadx
