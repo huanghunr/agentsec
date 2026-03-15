@@ -9,7 +9,7 @@
     };
   };
 
-  users.users.huanghunr = {
+  users.users.nixos = {
     extraGroups = [
       "podman"
     ];

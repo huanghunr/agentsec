@@ -15,6 +15,9 @@
     vim
   ];
 
+  users.users.nixos = {
+    isNormalUser = true;
+  };
   programs.nix-ld.enable = true;
 
   programs.bash = {
