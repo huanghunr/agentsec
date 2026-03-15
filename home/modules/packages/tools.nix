@@ -1,4 +1,8 @@
-{pkgs, inputs, ...}:{
+{pkgs, inputs, ...}:
+let
+  pwno-up = pkgs.callPackage ./pwno-up/default.nix {};
+in 
+{
   home.packages = with pkgs; 
   [
     binwalk
@@ -11,6 +15,7 @@
   ++[
     pwntools
     ropgadget
+    pwno-up
   ]
   ++[
     jadx
