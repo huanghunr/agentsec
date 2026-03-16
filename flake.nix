@@ -29,6 +29,11 @@
       flake = false;
     };
 
+    awesome-claude-skills = {
+      url = "github:ComposioHQ/awesome-claude-skills";
+      flake = false;
+    };
+
     agent-skills = {
       url = "github:Kyure-A/agent-skills-nix";
       inputs.nixpkgs.follows = "nixpkgs";

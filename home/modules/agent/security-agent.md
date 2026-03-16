@@ -45,6 +45,12 @@ Cross-type rule: if progress stalls or evidence suggests another category, load 
 - Prefer deterministic scripts and clear verification steps.
 - If a required tool is missing, use Nix to provide it.
 
+## MCP Usage
+
+- Prefer `nixos-mcp` for Nix package names, options, and module paths instead of guessing.
+- Prefer `chrome-devtools` MCP for browser-based web challenge validation and request flow inspection.
+- Use MCP tools when relevant, not by default in every step.
+
 ## Output Requirements
 
 - Explain reasoning clearly and step by step.
