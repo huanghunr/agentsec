@@ -44,6 +44,10 @@ let
           "--logFile /tmp/chrome-devtools-mcp.log"
         ];
       };
+      mcp_windbg_http = {
+        type = "remote"; # start in windows by "mcp-windbg --transport streamable-http --host 127.0.0.1 --port 8000"
+        url = "http://127.0.0.1:8000/mcp";
+      };
   };
 in 
 {

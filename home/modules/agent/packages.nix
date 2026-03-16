@@ -18,6 +18,11 @@ in
         subdir = ".";
       };
 
+      sources.awesome-claude-skills = {
+        path = inputs.awesome-claude-skills;
+        subdir = ".";
+      };
+
       skills.enable = [
         "solve-challenge"
         "ctf-web"
@@ -28,6 +33,9 @@ in
         "ctf-osint"
         "ctf-malware"
         "ctf-misc"
+        
+        "mcp-builder"
+        "skill-creator"
       ];
 
       targets.opencode = {
