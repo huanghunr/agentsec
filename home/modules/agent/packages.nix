@@ -10,6 +10,33 @@ in
   ];
 
   programs = {
+    agent-skills = {
+      enable = true;
+
+      sources.ctf = {
+        path = inputs.ctf-skills;
+        subdir = ".";
+      };
+
+      skills.enable = [
+        "solve-challenge"
+        "ctf-web"
+        "ctf-pwn"
+        "ctf-crypto"
+        "ctf-reverse"
+        "ctf-forensics"
+        "ctf-osint"
+        "ctf-malware"
+        "ctf-misc"
+      ];
+
+      targets.opencode = {
+        enable = true;
+        dest = "$HOME/.config/opencode/skill";
+        structure = "symlink-tree";
+      };
+    };
+
     opencode = {
       enable = true;
       enableMcpIntegration = true;
@@ -18,7 +45,7 @@ in
         theme = "system";
         provider = {
           google = {
-            models= {
+            models = {
               claude-opus-4-6-thinking = {
                 name = "claude-opus-4-6-thinking";
               };
@@ -30,7 +57,7 @@ in
           };
         };
       };
-      agents = { 
+      agents = {
         security-agent = ./security-agent.md;
         nixos-agent = ./this-project-dev-agent.md;
       };

@@ -20,6 +20,46 @@
         "type": "github"
       }
     },
+    "agent-skills": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772640663,
+        "narHash": "sha256-apWnei/2LGgJ247h4WpPQsGooWot4I3CX2PzPsXGx3A=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "0e74b9e4b998807c21ab7ac49d00074aee5df96c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "type": "github"
+      }
+    },
+    "ctf-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773638540,
+        "narHash": "sha256-H1o8+R8nGpnxXN4Oy0apWjexb3fHVJWu4eiIPSZ/6cg=",
+        "owner": "huanghunr",
+        "repo": "ctf-skills",
+        "rev": "65b5b40a077c289043edd4aa738297f7d0422b4c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "huanghunr",
+        "ref": "nix",
+        "repo": "ctf-skills",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -351,6 +391,8 @@
     "root": {
       "inputs": {
         "Neve": "Neve",
+        "agent-skills": "agent-skills",
+        "ctf-skills": "ctf-skills",
         "home-manager": "home-manager",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_3",

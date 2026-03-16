@@ -23,6 +23,17 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ctf-skills = {
+      url = "github:huanghunr/ctf-skills?ref=nix";
+      flake = false;
+    };
+
+    agent-skills = {
+      url = "github:Kyure-A/agent-skills-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =
@@ -42,7 +53,7 @@
 
         modules = [
           ./configuration.nix
-          
+
           inputs.sops-nix.nixosModules.sops
           home-manager.nixosModules.default
           {
