@@ -2,6 +2,7 @@
 let
   pwno-up = pkgs.callPackage ./pwno-up.nix { };
   idalib-up = pkgs.callPackage ./idalib-up.nix { };
+  blutter = pkgs.callPackage ./blutter.nix { };
 in
 {
   home.packages =
@@ -21,6 +22,7 @@ in
     ++ [
       android-tools
       jadx
+      blutter
     ]
     ++ [
       google-chrome
