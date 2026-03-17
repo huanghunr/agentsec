@@ -18,7 +18,7 @@
   users.users.nixos = {
     isNormalUser = true;
   };
-  programs.nix-ld={
+  programs.nix-ld = {
     enable = true;
     libraries = [
     ];
