@@ -30,10 +30,21 @@ let
     icu
     capstone
   ];
-  cmakePrefixPath = lib.makeSearchPathOutput "dev" "" [
+  cmakePrefixPath = lib.makeSearchPath "" [
+    (lib.getDev icu)
+    (lib.getLib icu)
+    (lib.getDev capstone)
+    (lib.getLib capstone)
+  ];
+  cmakeLibraryPath = lib.makeLibraryPath [
     icu
     capstone
   ];
+  cmakeIncludePath = lib.makeSearchPathOutput "dev" "include" [
+    icu
+    capstone
+  ];
+  capstoneCompatInclude = "${lib.getDev capstone}/include/capstone";
 in
 writeShellApplication {
   name = "blutter";
@@ -59,6 +70,12 @@ writeShellApplication {
 
     export PKG_CONFIG_PATH="${pkgConfigPath}''${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
     export CMAKE_PREFIX_PATH="${cmakePrefixPath}''${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}"
+    export CMAKE_LIBRARY_PATH="${cmakeLibraryPath}''${CMAKE_LIBRARY_PATH:+:$CMAKE_LIBRARY_PATH}"
+    export CMAKE_INCLUDE_PATH="${cmakeIncludePath}''${CMAKE_INCLUDE_PATH:+:$CMAKE_INCLUDE_PATH}"
+    export LD_LIBRARY_PATH="${cmakeLibraryPath}''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+    export ICU_ROOT="${lib.getDev icu}"
+    export CPPFLAGS="-I${capstoneCompatInclude} ''${CPPFLAGS:-}"
+    export CXXFLAGS="-I${capstoneCompatInclude} ''${CXXFLAGS:-}"
 
     exec "${pythonEnv}/bin/python" "$workDir/blutter.py" "$@"
   '';
