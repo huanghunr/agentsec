@@ -12,28 +12,53 @@ let
 in
 let
   mcpPython = python.withPackages (
-    ps: with ps; [
-      # python language server
-      # pyright
+    ps:
+    with ps;
+    [
+      # Tooling
       ruff
-
-      pipx # Install and Run Python Applications in Isolated Environments
-      black # python formatter
-      uv # python project package manager
-
-      # my commonly used python packages
+      black
+      mypy
+      pytest
+      uv
+      pipx
+    ]
+    ++ [
+      # Data / notebook
       jupyter
+      jupyterlab
+      ipykernel
       ipython
-      pandas
-      requests
-      pyquery
-      pyyaml
-      boto3
-
-      # misc
-      protobuf # protocol buffer compiler
       numpy
+      pandas
+      scipy
+      matplotlib
+      tqdm
+    ]
+    ++ [
+      # Networking / scraping
+      requests
+      httpx
+      pyquery
+      beautifulsoup4
+      lxml
+      pyyaml
+      python-dotenv
+      boto3
+    ]
+    ++ [
+      # Security / crypto helpers
+      scapy
+      pwntools
+      cryptography
+      pynacl
       ida-pro-mcp
+    ]
+    ++ [
+      # Misc
+      protobuf
+      pydantic
+      orjson
     ]
   );
 in
