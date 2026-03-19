@@ -11,6 +11,7 @@ in
       binwalk
       upx
       socat
+      file
     ]
     ++ [
       inputs.pwndbg.packages.${pkgs.system}.default

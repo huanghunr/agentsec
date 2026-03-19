@@ -25,7 +25,7 @@
     };
 
     ctf-skills = {
-      url = "github:huanghunr/ctf-skills?ref=nix";
+      url = "github:ljagiello/ctf-skills";
       flake = false;
     };
 

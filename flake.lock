@@ -62,16 +62,15 @@
     "ctf-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1773638540,
-        "narHash": "sha256-H1o8+R8nGpnxXN4Oy0apWjexb3fHVJWu4eiIPSZ/6cg=",
-        "owner": "huanghunr",
+        "lastModified": 1773896554,
+        "narHash": "sha256-fS/Ixv4GP45aTkDkL5PgmNRb/BdVx6BQHaXS9cyZqV0=",
+        "owner": "ljagiello",
         "repo": "ctf-skills",
-        "rev": "65b5b40a077c289043edd4aa738297f7d0422b4c",
+        "rev": "952b9be163ba5377302e26a6c39305ba6b9250c2",
         "type": "github"
       },
       "original": {
-        "owner": "huanghunr",
-        "ref": "nix",
+        "owner": "ljagiello",
         "repo": "ctf-skills",
         "type": "github"
       }

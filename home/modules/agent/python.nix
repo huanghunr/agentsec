@@ -34,6 +34,7 @@ let
       scipy
       matplotlib
       tqdm
+      z3-solver
     ]
     ++ [
       # Networking / scraping
