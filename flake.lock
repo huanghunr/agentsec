@@ -62,11 +62,11 @@
     "ctf-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1773896554,
-        "narHash": "sha256-fS/Ixv4GP45aTkDkL5PgmNRb/BdVx6BQHaXS9cyZqV0=",
+        "lastModified": 1774424460,
+        "narHash": "sha256-aX50YacUMSRdYvkNEjtxNBa0558xSRGm7+6OQVms2GQ=",
         "owner": "ljagiello",
         "repo": "ctf-skills",
-        "rev": "952b9be163ba5377302e26a6c39305ba6b9250c2",
+        "rev": "479bc9d3384dc47df601a440e2e341011f5dff4b",
         "type": "github"
       },
       "original": {

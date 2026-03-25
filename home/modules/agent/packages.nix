@@ -52,17 +52,7 @@ in
       settings = {
         theme = "system";
         provider = {
-          google = {
-            models = {
-              claude-opus-4-6-thinking = {
-                name = "claude-opus-4-6-thinking";
-              };
-            };
-            options = {
-              baseURL = "https://llm.xiaochisaas.com/v1";
-              apiKey = "{env:XIAOCHI_API_KEY}";
-            };
-          };
+          
         };
       };
       agents = {

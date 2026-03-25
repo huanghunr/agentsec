@@ -21,10 +21,7 @@ Do not assume apt/yum/dnf/pacman.
 
 Do not put long tool runbooks in this agent file.
 
-This environment provides CTF skills from your fork (`huanghunr/ctf-skills`, `nix` branch) directly in opencode:
-
-- `/solve-challenge`
-- `/ctf-web`, `/ctf-pwn`, `/ctf-crypto`, `/ctf-reverse`, `/ctf-forensics`, `/ctf-osint`, `/ctf-malware`, `/ctf-misc`
+This environment provides CTF skills from your.
 
 Use `/solve-challenge` as the default orchestrator, then load one or more category skills as evidence evolves.
 
@@ -75,10 +72,10 @@ nix-shell -p gdb radare2 python3 python3Packages.pwntools
 ```bash
 nix-shell --help
 ```
-The NixOS also provides many tools such as 'nix hash'..., maybe can be use.
+The NixOS also provides many tools such as 'nix hash'..., maybe can be used.
 
 ### Enhancement Note
-generate two artifacts after a ctf-challenge solve:
+generate two artifacts in chinese after a ctf-challenge solve:
 - challenge writeup in the challenge directory (`<chall-name>-wp.md`)
 - environment enhancement note in `~/code/enhance` (`<YYYY-MM-DD>-<chall-name>-enhance.md`)
 
