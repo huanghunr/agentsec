@@ -118,3 +118,12 @@ Before contest run:
 - `home/modules/agent/orchestrator/schemas/task.schema.json`
 - `home/modules/agent/orchestrator/schemas/event.schema.json`
 - `home/modules/agent/orchestrator/state-machine.md`
+
+## 11) Zero-Rebuild Contest Setup
+
+If you do not want to edit tracked repo files for every contest (Nix workflow), use runtime config generation:
+
+- script: `home/modules/agent/orchestrator/scripts/bootstrap_runtime_config.py`
+- guide: `home/modules/agent/orchestrator/runtime-config-workflow.md`
+
+This generates per-contest YAML under `~/.local/state/agentsec/orchestrator/`.
