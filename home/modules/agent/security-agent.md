@@ -55,6 +55,27 @@ Cross-type rule: if progress stalls or evidence suggests another category, load 
 - Provide concrete next commands.
 - Keep recommendations compatible with NixOS + WSL + fish.
 
+
+## CTF Orchestrator Policy (Master / Worker)
+
+When running multi-challenge CTF automation:
+
+- Use one master agent for collection + scheduling, and worker agents for solving.
+- Hard limit: max 3 active challenge workers at once.
+- Priority:
+  1. `crypto` and `reverse`
+  2. then other categories
+  3. within same category, prefer higher solved-count tasks
+- If a task is too hard (timeout / no progress / repeated failed strategies), stop it and switch to next queued task.
+- Re-check platform periodically for:
+  - new tasks
+  - attachment updates
+  - new hints
+  - solve-count changes
+- Support two submit modes:
+  - `auto-submit` (submit flag automatically)
+  - `print-only` (only output candidate flag)
+
 ## tips
 ### Environment Baseline (Nix-friendly)
 When you use tools in skill you shuld check the tools if they are installed.
